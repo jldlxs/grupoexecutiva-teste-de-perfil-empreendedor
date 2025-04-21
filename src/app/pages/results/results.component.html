@@ -1,0 +1,79 @@
+<div class="min-h-screen bg-gray-50 p-4">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+      <h1 class="text-2xl font-bold text-center mb-4">Resultados do Teste</h1>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <span class="text-sm text-gray-500">Nome</span>
+          <p class="font-medium">{{ userInfo?.fullName }}</p>
+        </div>
+        <div>
+          <span class="text-sm text-gray-500">Email</span>
+          <p class="font-medium">{{ userInfo?.email }}</p>
+        </div>
+        <div>
+          <span class="text-sm text-gray-500">Telefone</span>
+          <p class="font-medium">{{ userInfo?.phone }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Radar Chart -->
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+      <h2 class="text-xl font-semibold mb-4">Gráfico de Perfil</h2>
+      <div class="aspect-square max-w-2xl mx-auto">
+        <canvas baseChart
+          [data]="radarChartData"
+          [options]="radarChartOptions"
+          [type]="'radar'">
+        </canvas>
+      </div>
+    </div>
+
+    <!-- Detailed Results -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-xl font-semibold mb-6">Resultados Detalhados</h2>
+      
+      <div class="space-y-6">
+        <div *ngFor="let group of results?.groups">
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-medium">{{ group.name }}</span>
+            <span class="text-sm font-medium">
+              {{ group.score }}/{{ group.maxScore }}
+            </span>
+          </div>
+          <div class="h-2 bg-gray-200 rounded-full">
+            <div
+              class="h-full bg-primary rounded-full transition-all duration-300"
+              [style.width.%]="getProgressPercentage(group.score, group.maxScore)">
+            </div>
+          </div>
+        </div>
+
+        <!-- Total Score -->
+        <div class="pt-6 border-t">
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-bold">Pontuação Total</span>
+            <span class="text-sm font-bold">
+              {{ results?.totalScore }}/{{ results?.maxTotalScore }}
+            </span>
+          </div>
+          <div class="h-3 bg-gray-200 rounded-full">
+            <div
+              class="h-full bg-primary rounded-full transition-all duration-300"
+              [style.width.%]="getProgressPercentage(results?.totalScore || 0, results?.maxTotalScore || 1)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Button -->
+    <div class="mt-8 text-center">
+      <button (click)="startNewTest()" class="btn btn-primary">
+        Iniciar Novo Teste
+      </button>
+    </div>
+  </div>
+</div>

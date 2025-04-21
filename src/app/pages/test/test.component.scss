@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+.option-card {
+  @apply p-4 rounded-lg border border-gray-300 cursor-pointer transition-all duration-200 hover:border-primary hover:bg-primary/5;
+}
+
+.option-card.selected {
+  @apply border-primary bg-primary/10;
+}

@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+.input-field:focus {
+  @apply ring-2 ring-primary ring-opacity-50;
+}
+
+button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}

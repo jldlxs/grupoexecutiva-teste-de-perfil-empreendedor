@@ -322,7 +322,7 @@ export class QuestionsService {
       this.calculateGroup('Exigência de qualidade e eficiência', [4, 15, 26, 37, 48], 0, [-1]),
 
       // Group 5: Correr riscos calculados (max 25)
-      this.calculateGroup('Correr riscos calculados', [5, 16, 27, 38, 49], 6, [-1]),
+      this.calculateGroup('Correr riscos calculados', [5, 16, 27, 38, 49], 6, [3]),
 
       // Group 6: Estabelecimento de metas (max 25)
       this.calculateGroup('Estabelecimento de metas', [6, 17, 28, 39, 50], 6, [1]),
